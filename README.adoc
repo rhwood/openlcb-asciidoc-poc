@@ -33,7 +33,7 @@ mvn -P openlcb
 
 ==== All Documents as NMRA Published Documents
 ....
-mvn -P nmra-lcc
+mvn -P nmralcc
 ....
 
 ==== Specific Document(s)

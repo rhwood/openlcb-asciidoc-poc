@@ -14,6 +14,7 @@
         <maven.compiler.target>1.8</maven.compiler.target>
         <!-- empty matchs all Asciidoc files by default -->
         <openlcb.doc></openlcb.doc>
+        <openlcb.fo.customization>src/resources/docbook-fo.xsl</openlcb.fo.customization>
     </properties>
 
     <profiles>
@@ -23,26 +24,21 @@
             <activation>
                 <activeByDefault>true</activeByDefault>
             </activation>
-            <build>
-                <plugins>
-                    <plugin>
-                        <!-- adds a draft watermark -->
-                        <groupId>com.agilejava.docbkx</groupId>
-                        <artifactId>docbkx-maven-plugin</artifactId>
-                        <configuration>
-                            <foCustomization>src/resources/docbook-fo-draft.xsl</foCustomization>
-                        </configuration>
-                    </plugin>
-                </plugins>
-            </build>
+            <properties>
+                <openlcb.fo.customization>src/resources/docbook-fo-draft.xsl</openlcb.fo.customization>
+            </properties>
         </profile>
         <profile>
             <id>openlcb</id>
-            <!-- published openlcb documents -->
+            <properties>
+                <openlcb.fo.customization>src/resources/docbook-fo-openlcb.xsl</openlcb.fo.customization>
+            </properties>
         </profile>
         <profile>
             <id>nmralcc</id>
-            <!-- publiched NMRA LCC documents -->
+            <properties>
+                <openlcb.fo.customization>src/resources/docbook-fo-nmra-lcb.xsl</openlcb.fo.customization>
+            </properties>
         </profile>
     </profiles>
 
@@ -173,7 +169,7 @@
                 <configuration>
                     <sourceDirectory>${project.build.directory}/generated-docs</sourceDirectory>
                     <targetDirectory>${project.build.directory}/generated-docs</targetDirectory>
-                    <foCustomization>src/resources/docbook-fo.xsl</foCustomization>
+                    <foCustomization>${openlcb.fo.customization}</foCustomization>
                     <xincludeSupported>true</xincludeSupported>
                     <!-- NOTE imgSrcPath is handled by AsciiDoc settings -->
                     <imgSrcPath></imgSrcPath>
