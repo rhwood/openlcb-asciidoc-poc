@@ -12,7 +12,7 @@ Proof of Concept for tooling and workflows for publishing OpenLCB and NMRA LCC s
 
 NOTE: Maven automatically manages dependencies other than those listed above. Therefor, when a dependency is updated in the pom.xml file, the next use of Maven will require internet access.
 
-Maven has a default _phase_ and default _profile_. In the POC, the _phase_ can be ignored, but profiles are used to control both how documents are rendered and which documents are rendered.
+Maven has a default _phase_ and default _profile_. In the POC, the _phase_ can be ignored, but profiles are used to control how documents are rendered.
 
 === Generate Documents
 
@@ -20,7 +20,11 @@ Maven has a default _phase_ and default _profile_. In the POC, the _phase_ can b
 ....
 mvn
 ....
-The generated documents and intermediate outputs will be in `target/generated-docs`
+or
+....
+mvn -P draft
+....
+The generated documents and intermediate outputs will be in `target/generated-docs`.
 
 ==== All Documents as OpenLCB Published Documents
 ....
@@ -34,13 +38,9 @@ mvn -P nmra-lcc
 
 ==== Specific Document(s)
 ....
-mvn -P <profile[,profile[...]]>
+mvn -D openlcb.doc=<document>
 ....
-or
-....
-mvn -P <profile> [-P <profile> [...]]
-....
-A _profile_ needs to exist in the pom.xml to generate a specific document. Use `mvn help:all-profiles` to list the existing profiles.
+`<document>` is the full document name relative to the source directory (`src`). This can be combined with profiles to update a single document with specific rendering (e.g., `mvn -P draft -D openlcb.doc=datagram-transport-s.adoc`).
 
 === Remove Generated Content
 ....

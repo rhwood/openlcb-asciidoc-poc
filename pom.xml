@@ -12,37 +12,11 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
+        <!-- empty matchs all Asciidoc files by default -->
+        <openlcb.doc></openlcb.doc>
     </properties>
 
     <profiles>
-        <profile>
-            <id>datagram-transport</id>
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>org.asciidoctor</groupId>
-                        <artifactId>asciidoctor-maven-plugin</artifactId>
-                        <configuration>
-                            <sourceDocumentName>datagram-transport-s.adoc</sourceDocumentName>
-                        </configuration>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
-        <profile>
-            <id>test2</id>
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>org.asciidoctor</groupId>
-                        <artifactId>asciidoctor-maven-plugin</artifactId>
-                        <configuration>
-                            <sourceDocumentName>test2.adoc</sourceDocumentName>
-                        </configuration>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
         <profile>
             <id>draft</id>
             <!-- draft openlcb documents -->
@@ -100,6 +74,7 @@
                 </dependencies>
                 <configuration>
                     <sourceDirectory>src</sourceDirectory>
+                    <sourceDocumentName>${openlcb.doc}</sourceDocumentName>
                     <!-- If you set baseDir to ${project.basedir}, top-level includes are resolved relative to the project root -->
                     <!--
                     <baseDir>${project.basedir}</baseDir>
