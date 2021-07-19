@@ -1,0 +1,47 @@
+= OpenLCB Asciidoc POC
+
+Proof of Concept for tooling and workflows for publishing OpenLCB and NMRA LCC standards via Asciidoc and Maven.
+
+== Prerequisites
+
+- https://maven.apache.org[Maven]
+- A raw text editor (https://code.visualstudio.com[Visual Studio Code] is recommended)
+
+== Usage
+
+NOTE: Maven automatically manages dependencies. Therefor, when a dependency is updated in the pom.xml file, the next use of Maven will require internet access.
+
+Maven has a default _phase_ and default _profile_. In the POC, the _phase_ can be ignored, but profiles are used to control both how documents are rendered and which documents are rendered.
+
+=== Generate Documents
+
+==== All Documents as Drafts
+....
+mvn
+....
+The generated documents and intermediate outputs will be in `target/generated-docs`
+
+==== All Documents as OpenLCB Published Documents
+....
+mvn -P openlcb
+....
+
+==== All Documents as NMRA Published Documents
+....
+mvn -P nmra-lcc
+....
+
+==== Specific Document(s)
+....
+mvn -P <profile[,profile[...]]>
+....
+or
+....
+mvn -P <profile> [-P <profile> [...]]
+....
+A _profile_ needs to exist in the pom.xml to generate a specific document. Use `mvn help:all-profiles` to list the existing profiles.
+
+=== Remove Generated Content
+....
+mvn clean
+....
