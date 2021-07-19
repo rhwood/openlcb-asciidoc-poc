@@ -108,6 +108,9 @@
                         <endpoint-url>http://example.org</endpoint-url>
                         <sourcedir>${project.build.sourceDirectory}</sourcedir>
                     </attributes>
+                    <requires>
+                        <require>asciidoctor-diagram</require>
+                    </requires>
                 </configuration>
                 <executions>
                     <execution>
