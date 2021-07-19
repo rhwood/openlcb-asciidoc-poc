@@ -46,3 +46,12 @@ mvn -D openlcb.doc=<document>
 ....
 mvn clean
 ....
+
+== Stylesheets
+
+This project (currently) uses the default XSLT stylesheets for DocBook with parameters specified in a profile-dependent stylesheet.
+
+=== References
+
+- http://www.sagehill.net/docbookxsl/PdfBookmarks.html[DocBook XSL: The Complete Guide]
+- http://docbook.sourceforge.net/release/xsl/current/doc/index.html[DocBook XSL Stylesheets: Reference Documentation]
