@@ -19,3 +19,15 @@ Morbi erat mi, consequat non arcu quis, faucibus lacinia ligula. Pellentesque ha
 Phasellus fringilla ligula eget leo condimentum bibendum. Aenean arcu risus, egestas vel velit quis, scelerisque bibendum mi. Pellentesque ac luctus lorem. Nam laoreet arcu id ipsum ultricies, sed faucibus mauris iaculis. Mauris dapibus porta placerat. Sed eu commodo diam, quis volutpat nibh. Nulla porta magna ipsum, eget ullamcorper odio luctus id. Sed finibus hendrerit nisi sed convallis. Morbi congue neque sed neque maximus, id iaculis libero dignissim.
 
 Vestibulum vitae convallis velit. Mauris felis diam, blandit et sodales vitae, tempor ut velit. Cras quis sem consectetur, pharetra justo sit amet, dignissim urna. Duis porttitor est id condimentum vulputate. Donec et lectus finibus, luctus neque sit amet, laoreet lectus. Suspendisse elit lacus, accumsan dictum sagittis nec, ornare sed ante. Vestibulum vel gravida ligula, id laoreet lectus. Nulla aliquet odio at tortor facilisis, vitae suscipit quam aliquam. Donec feugiat, ex at euismod scelerisque, dolor lacus malesuada neque, pretium feugiat dui ex quis nisl.
+
+[plantuml, diagram-classes, png]
+....
+class BlockProcessor
+class DiagramBlock
+class DitaaBlock
+class PlantUmlBlock
+
+BlockProcessor <|-- DiagramBlock
+DiagramBlock <|-- DitaaBlock
+DiagramBlock <|-- PlantUmlBlock
+....
