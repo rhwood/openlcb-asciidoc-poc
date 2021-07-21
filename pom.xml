@@ -170,6 +170,7 @@
                     <sourceDirectory>${project.build.directory}/generated-docs</sourceDirectory>
                     <targetDirectory>${project.build.directory}/generated-docs</targetDirectory>
                     <foCustomization>${openlcb.fo.customization}</foCustomization>
+                    <fop1Extensions>1</fop1Extensions>
                     <xincludeSupported>true</xincludeSupported>
                     <!-- NOTE imgSrcPath is handled by AsciiDoc settings -->
                     <imgSrcPath></imgSrcPath>
