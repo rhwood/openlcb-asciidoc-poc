@@ -92,7 +92,6 @@
                         </goals>
                         <configuration>
                             <backend>docbook</backend>
-                            <doctype>article</doctype>
                             <attributes>
                                 <imagesdir>images</imagesdir>
                             </attributes>
