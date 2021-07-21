@@ -6,4 +6,6 @@
     <!-- Use section numbers -->
     <xsl:param name="section.autolabel" select="1" />
     <!-- Line numbers (every 5 lines) -->
+    <xsl:param name="linenumbering.extension" select="1" />
+    <xsl:param name="linenumbering.everyNth">5</xsl:param>
 </xsl:stylesheet>
