@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-    <xsl:import href="urn:docbkx:stylesheet" />
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:fo="http://www.w3.org/1999/XSL/Format" version="1.0">
+    <xsl:import href="urn:docbkx:stylesheet" />
     <!-- Allow extensions to be used -->
     <xsl:param name="use.extensions" select="1" />
     <!-- Use section numbers -->
