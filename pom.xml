@@ -14,7 +14,9 @@
         <maven.compiler.target>1.8</maven.compiler.target>
         <!-- empty matchs all Asciidoc files by default -->
         <openlcb.doc></openlcb.doc>
-        <openlcb.fo.customization>src/resources/docbook-fo.xsl</openlcb.fo.customization>
+        <openlcb.fo.customization>docbook-fo.xsl</openlcb.fo.customization>
+        <!-- docbook XSL version -->
+        <docbook.xsl.version>1.79.1</docbook.xsl.version>
     </properties>
 
     <profiles>
@@ -25,19 +27,19 @@
                 <activeByDefault>true</activeByDefault>
             </activation>
             <properties>
-                <openlcb.fo.customization>src/resources/docbook-fo-draft.xsl</openlcb.fo.customization>
+                <openlcb.fo.customization>docbook-fo-draft.xsl</openlcb.fo.customization>
             </properties>
         </profile>
         <profile>
             <id>openlcb</id>
             <properties>
-                <openlcb.fo.customization>src/resources/docbook-fo-openlcb.xsl</openlcb.fo.customization>
+                <openlcb.fo.customization>docbook-fo-openlcb.xsl</openlcb.fo.customization>
             </properties>
         </profile>
         <profile>
             <id>nmralcc</id>
             <properties>
-                <openlcb.fo.customization>src/resources/docbook-fo-nmra-lcb.xsl</openlcb.fo.customization>
+                <openlcb.fo.customization>docbook-fo-nmra-lcb.xsl</openlcb.fo.customization>
             </properties>
         </profile>
     </profiles>
@@ -132,6 +134,63 @@
             </plugin>
             -->
             <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <version>3.2.0</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>unpack-dependencies</goal>
+                        </goals>
+                        <configuration>
+                            <includeGroupIds>net.sf.docbook</includeGroupIds>
+                            <includeArtifactIds>docbook-xsl</includeArtifactIds>
+                            <includeClassifiers>ns-resources</includeClassifiers>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>xml-maven-plugin</artifactId>
+                <version>1.0.2</version>
+                <executions>
+                    <execution>
+                        <phase>generate-resources</phase>
+                        <goals>
+                            <goal>transform</goal>
+                        </goals>
+                        <configuration>
+                            <transformationSets>
+                                <transformationSet>
+                                    <dir>target/generated-docs</dir>
+                                    <stylesheet>target/generated-docs/resources/${openlcb.fo.customization}</stylesheet>
+                                    <includes>*.xml</includes>
+                                    <fileMappers>
+                                        <fileMapper implementation="org.codehaus.plexus.components.io.filemappers.FileExtensionMapper">
+                                            <targetExtension>.fo</targetExtension>
+                                        </fileMapper>
+                                    </fileMappers>
+                                </transformationSet>
+                            </transformationSets>
+                        </configuration>
+                    </execution>
+                </executions>
+                <dependencies>
+                    <dependency>
+                      <groupId>saxon</groupId>
+                      <artifactId>saxon</artifactId>
+                      <version>6.5.3</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>org.docbook</groupId>
+                        <artifactId>docbook-xsl-java-saxon</artifactId>
+                        <version>1.2.1-95</version>
+                    </dependency>
+                  </dependencies>
+            </plugin>
+            <!--
+            <plugin>
                 <groupId>com.agilejava.docbkx</groupId>
                 <artifactId>docbkx-maven-plugin</artifactId>
                 <version>2.0.17</version>
@@ -142,19 +201,16 @@
                         <version>5.0-all</version>
                         <classifier>resources</classifier>
                         <type>zip</type>
-                        <scope>runtime</scope>
                     </dependency>
                     <dependency>
                         <groupId>net.sf.xslthl</groupId>
                         <artifactId>xslthl</artifactId>
                         <version>2.0.1</version>
-                        <scope>runtime</scope>
                     </dependency>
                     <dependency>
                         <groupId>net.sf.offo</groupId>
                         <artifactId>fop-hyph</artifactId>
                         <version>1.2</version>
-                        <scope>runtime</scope>
                     </dependency>
                 </dependencies>
                 <executions>
@@ -171,12 +227,14 @@
                     <targetDirectory>${project.build.directory}/generated-docs</targetDirectory>
                     <foCustomization>${openlcb.fo.customization}</foCustomization>
                     <xincludeSupported>true</xincludeSupported>
-                    <!-- NOTE imgSrcPath is handled by AsciiDoc settings -->
+                    <fopExtensions>1</fopExtensions>
+                    <!- - NOTE imgSrcPath is handled by AsciiDoc settings - ->
                     <imgSrcPath></imgSrcPath>
-                    <!-- FIXME highlightSource not working! -->
+                    <!- - FIXME highlightSource not working! - ->
                     <highlightSource>1</highlightSource>
                 </configuration>
             </plugin>
+        -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-enforcer-plugin</artifactId>
@@ -199,4 +257,14 @@
             </plugin>
         </plugins>
     </build>
+    <dependencies>
+        <dependency>
+            <groupId>net.sf.docbook</groupId>
+            <artifactId>docbook-xsl</artifactId>
+            <version>${docbook.xsl.version}</version>
+            <classifier>ns-resources</classifier>
+            <type>zip</type>
+            <scope>compile</scope>
+        </dependency>
+    </dependencies>
 </project>
