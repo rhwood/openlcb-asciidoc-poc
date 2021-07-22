@@ -1,5 +1,7 @@
 = Test 2
 :doctype: article
+:openlcb-type: tech note
+:openlcb-status: preliminary
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas luctus ac arcu vel porttitor. Nam varius lobortis ex at facilisis. Vivamus sed ante in nibh efficitur euismod quis eu nisl. Ut feugiat vestibulum turpis, ac facilisis sem commodo non. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Sed urna nibh, ultricies non auctor id, pretium eget leo. Proin aliquam lobortis sollicitudin. Curabitur nunc enim, laoreet eget ultrices ut, venenatis sit amet mauris. Sed non placerat diam, non maximus felis. Aliquam erat volutpat. Curabitur a volutpat sem. Quisque tempus sapien eu iaculis venenatis. Vivamus consequat metus quis ligula tristique, ut commodo dolor gravida. Curabitur quis nulla sed ante pretium ullamcorper eu at quam.
 

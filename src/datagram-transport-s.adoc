@@ -1,5 +1,7 @@
 = Datagram Transport
 :doctype: article
+:openlcb-type: standard
+:openlcb-status: adopted
 2016-02-06
 
 == Introduction (Informative)

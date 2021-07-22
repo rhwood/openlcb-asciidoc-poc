@@ -1,0 +1,4 @@
+<openlcb-attributes xmlns="openlcb-attributes">
+    <openlcb-type>{openlcb-type}</openlcb-type>
+    <openlcb-status>{openlcb-status}</openlcb-status>
+</openlcb-attributes>
