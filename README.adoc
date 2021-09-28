@@ -8,6 +8,21 @@ Proof of Concept for tooling and workflows for publishing OpenLCB and NMRA LCC s
 - https://graphviz.gitlab.io[Graphviz] (to generate diagrams)
 - A raw text editor (https://code.visualstudio.com[Visual Studio Code] is recommended)
 
+== Installation
+
+=== Linux
+
+TBD
+
+=== macOS
+
+1. Install https://brew.sh[Homebrew]
+2. `brew install maven graphviz`
+
+=== Windows
+
+TBD
+
 == Usage
 
 NOTE: Maven automatically manages dependencies other than those listed above. Therefor, when a dependency is updated in the pom.xml file, the next use of Maven will require internet access.
