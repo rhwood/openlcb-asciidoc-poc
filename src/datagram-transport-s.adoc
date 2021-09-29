@@ -1,6 +1,6 @@
 = Datagram Transport
 :doctype: article
-2016-02-06
+:revdate: 2016-02-06
 
 == Introduction (Informative)
 
