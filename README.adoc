@@ -64,7 +64,25 @@ mvn clean
 
 == Stylesheets
 
-This project (currently) uses the default XSLT stylesheets for DocBook with parameters specified in a profile-dependent stylesheet.
+This project (currently) uses the default XSLT stylesheets for DocBook with parameters and titlepage customizations specified in a profile-dependent stylesheet.
+
+=== Title Pages
+
+The title page templates are `src/resources/openlcb-titlepage.templates.xml` and `src/resources/nmralcc-titlepage.templates.xml`. These can be edited in any editor, but need to be processed from XMl into XSL to be used as stylesheets.
+
+==== Processing
+
+===== Linux and macOS
+
+From the root of this project:
+....
+mvn
+./src/resources/proc-titlepage.sh
+....
+
+===== Windows
+
+TBD
 
 === References
 
